@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Entertain Pro</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/global.css" rel="stylesheet">
+    <link href="/css/index.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        .main_movie {
+            padding: 35px 0;
+            display: flex;
+            justify-content: flex-start;
+            border-bottom: 1px solid hsla(0, 0%, 6%, .07);
+            user-select: none;
+            margin: 0 24px;
+        }
+
+        .main_movie .movie_name {
+            width: 387px;
+            margin-right: 35px;
+            -webkit-tap-highlight-color: transparent;
+            color: #000;
+            font-size: 25px;
+        }
+
+        .main_movie .movie_show {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-auto-rows: auto;
+            align-items: baseline;
+            justify-content: center;
+            grid-row-gap: 25px;
+            grid-column-gap: 16px;
+        }
+
+        .movie_show .single_show {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 10px;
+            color: #506d85;
+            font-weight: 300;
+        }
+
+        .movie_show .single_show .show_time {
+            width: 131px;
+            height: 68px;
+            padding: 12px 8px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 24px;
+            border: 1px solid #000;
+            box-sizing: border-box;
+            letter-spacing: -.08px;
+        }
+
+        .movie_show .single_show .show_time .seat_price {
+            font-size: 10px;
+            color: #8ba6c1;
+            font-weight: 500;
+            line-height: 16px
+        }
+
+        .containers1 {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            top: 20%;
+            text-align: left;
+            padding: 30px 20px;
+            bottom: 8rem;
+            left: 35%;
+            width: 60%;
+            color: #fff;
+        }
+
+        :root {
+            --size: 150px;
+            --radius: calc(var(--size) * 20 / 100);
+        }
+
+        body {
+            margin: 0;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+            margin: auto;
+        }
+
+        .image-card {
+            width: var(--size);
+            height: var(--size);
+            border-radius: var(--radius);
+            position: relative;
+            background-size: cover;
+            margin: calc(var(--size) * 20 / 100);
+        }
+    </style>
+
+</head>
+
+<body>
+    <section id="header">
+        <nav class="navbar navbar-expand-md navbar-light" id="">
+            <div class="container-fluid">
+                <a class="navbar-brand fs-4 p-0 fw-bold text-white text-uppercase" href="/"><i
+                        class="fa fa-video-camera me-1 col_light fs-1 align-middle"></i> Entertain Pro</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-0">
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">About </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Blog
+                            </a>
+                            <ul class="dropdown-menu drop_1" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/"> Blog</a></li>
+                                <li><a class="dropdown-item border-0" href="/"> Blog Detail</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="event.html">Events</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="team.html">team</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+
+                    </ul>
+
+                    <li class="nav-item ms-3">
+                        <a class="nav-link button" href="/userLogOut">LOG OUT</a>
+                    </li>
+                    <!-- /.modal -->
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+
+    <div class="containers1">
+        <% for(let data of Shows){%>
+            <div class="main_movie">
+                <div class="movie_name">
+                    <%= data.MallID.name%>
+                </div>
+                <div class="movie_show">
+                    <%for(let time of data.Time){%>
+                        <a href="/BookSeat/<%= data.id%>/?time=<%=time%>">
+                            <div class="single_show">
+                                <div class="show_time">
+                                    <span>
+                                        <%= time%>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </a>
+                        <%}%>
+                </div>
+            </div>
+            <%}%>
+    </div>
+
+    <section id="footer" class="p_3" style="margin-top: 100px;">
+        <div class="container-xl">
+            <div class="row footer_1">
+                <div class="col-md-2">
+                    <div class="footer_1i">
+                        <h6 class="text-white fw-bold">LANGUAGE MOVIES</h6>
+                        <hr class="line mb-4">
+                        <div class="row footer_1i_small">
+                            <h6 class="col-md-12 col-6"><i class="fa fa-circle me-1 col_red font_10"></i> <a
+                                    class="text-muted" href="#">English Movie</a></h6>
+                            <h6 class="mt-2 col-md-12 col-6"><i class="fa fa-circle me-1 col_red font_10"></i> <a
+                                    class="text-muted" href="#">Tamil Movie</a></h6>
+                            <h6 class="mt-2 col-md-12 col-6"><i class="fa fa-circle me-1 col_red font_10"></i> <a
+                                    class="text-muted" href="#">Punjabi Movie</a></h6>
+                            <h6 class="mt-2 col-md-12 col-6"><i class="fa fa-circle me-1 col_red font_10"></i> <a
+                                    class="text-muted" href="#">Hindi Movie</a></h6>
+                            <h6 class="mt-2 col-md-12 col-6"><i class="fa fa-circle me-1 col_red font_10"></i> <a
+                                    class="text-muted" href="#">Malyalam Movie</a></h6>
+                            <h6 class="mb-0 mt-2 col-md-12 col-6"><i class="fa fa-circle me-1 col_red font_10"></i> <a
+                                    class="text-muted" href="#"> Action Movie</a></h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="footer_1i">
+                        <h6 class="text-white fw-bold">TAG CLOUD</h6>
+                        <hr class="line mb-4">
+                        <ul class="mb-0">
+                            <li class="d-inline-block"><a class="d-block" href="#">Analyze</a></li>
+                            <li class="d-inline-block"><a class="d-block" href="#">Audio</a></li>
+                            <li class="d-inline-block"><a class="d-block" href="#">Blog</a></li>
+                            <li class="d-inline-block"><a class="d-block" href="#">Business</a></li>
+                            <li class="d-inline-block"><a class="d-block" href="#">Creative</a></li>
+                            <li class="d-inline-block"><a class="d-block" href="#">Design</a></li>
+                            <li class="d-inline-block"><a class="d-block" href="#">Experiment</a></li>
+                            <li class="d-inline-block"><a class="d-block" href="#">News</a></li>
+                            <li class="d-inline-block"><a class="d-block" href="#">Expertize</a></li>
+                            <li class="d-inline-block"><a class="d-block" href="#">Express</a></li>
+                            <li class="d-inline-block"><a class="d-block" href="#">Share</a></li>
+                            <li class="d-inline-block"><a class="d-block" href="#">Sustain</a></li>
+                            <li class="d-inline-block"><a class="d-block" href="#">Video</a></li>
+                            <li class="d-inline-block"><a class="d-block" href="#">Youtube</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="footer_1i">
+                        <h6 class="text-white fw-bold">BY PRESENTER</h6>
+                        <hr class="line mb-4">
+                        <div class="row footer_1i_small">
+                            <h6 class="col-md-12 col-6"><i class="fa fa-circle me-1 col_red font_10"></i> <a
+                                    class="text-muted" href="#">Action Movie</a></h6>
+                            <h6 class="mt-2 col-md-12 col-6"><i class="fa fa-circle me-1 col_red font_10"></i> <a
+                                    class="text-muted" href="#">Romantic Movie</a></h6>
+                            <h6 class="mt-2 col-md-12 col-6"><i class="fa fa-circle me-1 col_red font_10"></i> <a
+                                    class="text-muted" href="#">Other Movie</a></h6>
+                            <h6 class="mt-2 col-md-12 col-6"><i class="fa fa-circle me-1 col_red font_10"></i> <a
+                                    class="text-muted" href="#">Comedy Movie</a></h6>
+                            <h6 class="mt-2 col-md-12 col-6"><i class="fa fa-circle me-1 col_red font_10"></i> <a
+                                    class="text-muted" href="#">Drama Movie</a></h6>
+                            <h6 class="mb-0 mt-2 col-md-12 col-6"><i class="fa fa-circle me-1 col_red font_10"></i> <a
+                                    class="text-muted" href="#">Classical Movie</a></h6>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="footer_1i">
+                        <h6 class="text-white fw-bold">SUBSCRIPTION</h6>
+                        <hr class="line mb-4">
+                        <p class="text-muted">Subscribe your Email address for latest news & updates.</p>
+                        <input class="form-control bg-transparent" placeholder="Enter Email Address" type="text">
+                        <h6 class="mb-0 mt-4"><a class="button_1 pt-3 pb-3" href="#">Submit <i
+                                    class="fa fa-check-circle ms-1"></i> </a></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="footer_b" class="pt-3 pb-3">
+        <div class="container-xl">
+            <div class="row footer_b1">
+                <div class="col-md-8">
+                    <div class="footer_b1l">
+                        <p class="mb-0 fs-6 text-muted mt-1">© 2013 Your Website Name. All Rights Reserved | Design by
+                            <a class="col_red" href="http://www.templateonweb.com">TemplateOnWeb</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="footer_b1r text-end">
+                        <ul class="social-network social-circle mb-0">
+                            <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li>
+                            <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-pinterest"></i></a>
+                            </li>
+                            <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

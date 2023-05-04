@@ -1,0 +1,80 @@
+<%- include('header') %>
+
+<div class="main-panel">        
+    <div class="content-wrapper">
+      <div class="row">
+        <div class="col-md-8 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Movie Form</h4>
+              <p class="card-description">
+                Enter Movie Details
+              </p>
+              <form class="forms-sample" method="post" action="/movie/insertMovieInfo" enctype="multipart/form-data">
+                <div class="form-group">
+                  <label for="exampleInputUsername1">Movie Name</label>
+                  <input type="text" name="MovieName" class="form-control" id="exampleInputUsername1" placeholder="Movie Name">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputUsername1">Screen Type</label>
+                  <input type="checkbox" class="form-check-input" name="ScreenType[]" value="2D">&nbsp;<label for="">2D</label>&nbsp;&nbsp;&nbsp;
+                  <input type="checkbox" class="form-check-input" name="ScreenType[]" value="3D">&nbsp;<label for="">3D</label>&nbsp;&nbsp;&nbsp;
+                  <input type="checkbox" class="form-check-input" name="ScreenType[]" value="Animation">&nbsp;<label for="">Animation</label>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="form-group">
+                <% var Language = ['Hindi', 'English', 'Gujarati', 'Bhojpuri'] %>
+                  <label for="exampleInputEmail1">Language</label>
+                  <select name="Language" class="form-control">
+                    <option value="">--- Select Language ---</option>
+                    <% for (var l of Language) { %>
+                        <option value="<%= l %>"><%= l %></option>
+                    <% } %>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Duration</label>
+                  <input type="time" name="Duration" class="form-control" value="2:00" placeholder="Select Duration">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">MovieType :</label>
+                  <input type="checkbox" class="form-check-input" name="MovieType[]" value="Action">&nbsp;<label for="">Action</label>&nbsp;&nbsp;&nbsp;
+                  <input type="checkbox" class="form-check-input" name="MovieType[]" value="Drama">&nbsp;<label for="">Drama</label>&nbsp;&nbsp;&nbsp;
+                  <input type="checkbox" class="form-check-input" name="MovieType[]" value="Comedy">&nbsp;<label for="">Comedy</label>&nbsp;&nbsp;&nbsp;
+                  <input type="checkbox" class="form-check-input" name="MovieType[]" value="Romance">&nbsp;<label for="">Romance</label>&nbsp;&nbsp;&nbsp;
+                  <input type="checkbox" class="form-check-input" name="MovieType[]" value="Horror">&nbsp;<label for="">Horror</label>&nbsp;&nbsp;&nbsp;
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputConfirmPassword1">Price :</label>
+                  <input type="text" class="form-control" id="exampleInputConfirmPassword1" name="Price" placeholder="Enter Price">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputConfirmPassword1">Realese Date :</label>
+                  <input type="date" class="form-control" id="exampleInputConfirmPassword1" name="Date" placeholder="Select Date">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Description :</label>
+                  <textarea name="Description" id="Description" class="form-control" style="min-height: 4rem;" placeholder="About Your Movie"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">MoviePoster :</label>
+                  <input type="file" name="MoviePoster" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">MovieBanner :</label>
+                    <input type="file" name="MovieBanner" class="form-control">
+                </div>
+                <button type="Submit" class="btn btn-primary me-2">Submit</button>
+                <a class="btn btn-light">Cancel</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:../../partials/_footer.html -->
+    <%- include('footer') %>
+    <!-- partial -->
+</div>
+</div>

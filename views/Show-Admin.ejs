@@ -1,0 +1,89 @@
+<%- include('header') %>
+
+<div class="main-panel">
+    <div class="content-wrapper">
+      <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Admin Details</h4>
+              <form class="d-flex align-items-center">
+                <label for="exampleInputUsername1">Search :</label>
+                <input type="text" name="search" class="form-control" style="width: 20pc; margin-left: 10px;" placeholder="Search Here">
+              </form>
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>
+                        No.
+                      </th>
+                      <th>
+                        ProfilePicture
+                      </th>
+                      <th>
+                        Name
+                      </th>
+                      <th>
+                        Email
+                      </th>
+                      <th>
+                        Gender
+                      </th>
+                      <th>
+                        Action
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% var i = 1 %>
+                    <% for (var d of Data) { %>
+                    <tr>
+                      <td>
+                        <%= i++ %>
+                      </td>
+                      <td>
+                        <img src="<%= d.ProfilePicture %>">
+                      </td>
+                      <td>
+                        <%= d.name %>
+                      </td>
+                      <td>
+                        <%= d.email %>
+                      </td>
+                      <td class="py-1">
+                        <%= d.gender %>
+                      </td>
+                      <td>
+                        <a href="/admin/DeleteData/<%= d.id %>">DeleteData</a> ||
+                        <a href="/admin/UpdateDataPage/<%= d.id %>">UpdateData</a>
+                      </td>
+                    </tr>
+                    <% } %>
+                  </tbody>
+                </table>
+                <div style="margin-top: 30px; text-align: center;">
+                  <% for (var a=1; a<=no; a++) { %>
+                    <a href="/admin/showAdmin/?page=<%= a %>" class="text-decoration-none"><%= a %>&nbsp;&nbsp;</a>
+                  <% } %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+      Noty.overrideDefaults({
+        layout   : 'topRight',
+        theme    : 'mint',
+        closeWith: ['click', 'button'],
+        animation: {
+            open : 'animated fadeInRight',
+            close: 'animated fadeOutRight'
+        }   
+      });
+    </script>
+<%- include('footer') %>

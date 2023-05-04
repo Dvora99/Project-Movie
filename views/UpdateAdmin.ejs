@@ -1,0 +1,73 @@
+<%- include('header') %>
+
+<div class="main-panel">        
+    <div class="content-wrapper">
+      <div class="row">
+        <div class="col-md-8 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Admin Form Update</h4>
+              <p class="card-description">
+                Update Your Details
+              </p>
+              <form class="forms-sample" method="post" action="/admin/UpdateData" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="<%= Udata.id %>">
+                <div class="form-group">
+                  <label for="exampleInputUsername1">First Name</label>
+                  <input type="text" name="fname" class="form-control" id="exampleInputUsername1" value="<%= Udata.fname %>">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputUsername1">Last Name</label>
+                  <input type="text" name="lname" class="form-control" id="exampleInputUsername1" value="<%= Udata.lname %>">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="text" name="email" class="form-control" id="exampleInputEmail1" value="<%= Udata.email %>">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="text" name="password" class="form-control" id="exampleInputPassword1" value="<%= Udata.password %>">
+                </div>
+                <div class="form-group">
+                  <% var city = ['Surat', 'Vadodra', 'Rajkot', 'Ahemadabad'] %>
+                  <label for="exampleInputPassword1">City :</label>
+                  <select name="city" id="city" class="form-control">
+                    <option value="">--- Select City ---</option>
+                    <% for (var c of city) { %>
+                      <option value="<%= c %>" <% if(Udata.city == c) { %> selected <% } %> ><%= c %></option>
+                    <% } %>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputConfirmPassword1">Gender &nbsp; : &nbsp;&nbsp;&nbsp;</label>
+                  <input type="radio" class="form-check-input" id="exampleInputConfirmPassword1" name="gender" value="male" <% if(Udata.gender == 'male') { %> checked <% } %> >&nbsp;&nbsp;<label for="">Male</label>&nbsp;&nbsp;&nbsp;
+                  <input type="radio" class="form-check-input" id="exampleInputConfirmPassword1" name="gender" value="female" <% if(Udata.gender == 'female') { %> checked <% } %> >&nbsp;&nbsp;<label for="">Female</label>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Hobby &nbsp;:&nbsp;&nbsp;&nbsp;</label>
+                  <input type="checkbox" class="form-check-input" name="hobby[]" value="Reading"  <% if(Udata.hobby == 'Reading') { %> checked <% } %>>&nbsp;<label for="">Reading</label>&nbsp;&nbsp;&nbsp;
+                  <input type="checkbox" class="form-check-input" name="hobby[]" value="Playing" <% if(Udata.hobby == 'Playing') { %> checked <% } %>>&nbsp;<label for="">Playing</label>&nbsp;&nbsp;&nbsp;
+                  <input type="checkbox" class="form-check-input" name="hobby[]" value="Gaming"  <% if(Udata.hobby == 'Gaming') { %> checked <% } %>>&nbsp;<label for="">Gaming</label>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Description :</label>
+                  <textarea name="description" id="description" class="form-control" style="min-height: 4rem;" placeholder="About Yourself In Brief"><%= Udata.description %></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Upload Photo :</label>
+                  <input type="file" name="ProfilePicture" class="form-control" style="position: relative;"><img src="<%= Udata.ProfilePicture %>" height="50px" width="50px" style="position: absolute;left: 25%; top: 85%;">
+                </div>
+                <button type="Submit" class="btn btn-primary me-2">Update</button>
+                <a class="btn btn-light">Cancel</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:../../partials/_footer.html -->
+    <%- include('footer') %>
+    <!-- partial -->
+</div>
+</div>

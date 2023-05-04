@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Entertain Pro</title>
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/font-awesome.min.css" rel="stylesheet">
+	<link href="/css/global.css" rel="stylesheet">
+	<link href="/css/index.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+	<script src="/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body>
+
+
+<div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">User Login</h5>
+            </div>
+            <div class="modal-body">
+
+                <form class="ps-3 pe-3" action="/UserLogin" method="post">
+
+                    <div class="mb-3">
+                        <label for="emailaddress" class="form-label">Email address</label>
+                        <input class="form-control" name="email" type="text" id="emailaddress" required="true"
+                            placeholder="Enter Your Email">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input class="form-control" name="password" type="text" required="true" id="password"
+                            placeholder="Enter your password">
+                    </div>
+
+                    <div class="mb-3 text-center">
+                        <h6><input class="button_1 d-block" type="submit" value="Login"></h6>
+                        Dont Have An Account ? <a href="/UserRegisterPage">Register</a>
+                    </div>
+
+                </form>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

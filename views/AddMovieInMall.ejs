@@ -1,0 +1,45 @@
+<%- include('header') %>
+
+<div class="main-panel">        
+    <div class="content-wrapper">
+      <div class="row">
+        <div class="col-md-8 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Movie in Mall Form</h4>
+              <p class="card-description">
+                Enter Movie In Mall Details
+              </p>
+              <form action="/Movie/InsertMovieInMallInfo" method="post">
+                <div class="mb-3">
+                  <label class="form-label" for="basic-default-fullname">Select Movie</label>
+                  <select name="MovieID" id="" class="form-select">
+                    <option value="">--Select Movie--</option>
+                    <%for(let data of movie){%>
+                        <option value="<%= data.id%>"><%= data.MovieName %></option>
+                        <%}%>
+                  </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="basic-default-fullname">Select Mall</label>
+                    <select name="MallID" id="" class="form-select">
+                        <option value="">--Select Mall--</option>
+                        <%for(let data of mall){%>
+                            <option value="<%= data.id%>"><%= data.name%></option>
+                            <%}%>
+                      </select>
+                  </div>
+                
+                <button type="submit" class="btn btn-primary">Add Movie</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:../../partials/_footer.html -->
+    <%- include('footer') %>
+    <!-- partial -->
+</div>
+</div>

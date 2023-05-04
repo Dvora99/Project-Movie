@@ -1,0 +1,62 @@
+<%- include('header') %>
+
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-md-8 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Add Show Form</h4>
+                            <p class="card-description">
+                                Enter Show Details
+                            </p>
+                            <form action="/Movie/InsertShow" method="post">
+                                <div class="mb-3">
+                                    <label class="form-label" for="basic-default-fullname">Select Movie</label>
+                                    <select name="MovieID" id="MovieID" onchange="getMallData()" class="form-select">
+                                        <option value="">--Select Movie--</option>
+                                        <%for(let data of movie){%>
+                                            <option value="<%= data.id%>">
+                                                <%= data.MovieName %>
+                                            </option>
+                                            <%}%>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="basic-default-fullname">Select Mall</label>
+                                    <select name="MallID" id="MallID" class="form-select">
+                                        <option value="">--Select Mall--</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="basic-default-company">Enter Show Time</label>
+                                    <input type="time" class="form-control" id="basic-default-company" name="Time" />
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Add Movie</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        <%- include('footer') %>
+            <!-- partial -->
+            <script>
+                function getMallData() {
+                    $.ajax({
+                        url: '/Movie/GetMovieDetails',
+                        type: 'post',
+                        data: {
+                            MovieID: document.getElementById('MovieID').value
+                        },
+                        success: (res) => {
+                            document.getElementById('MallID').innerHTML = res;
+                        }
+                    })
+                }
+            </script>
+    </div>
+    </div>
